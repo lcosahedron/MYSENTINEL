@@ -44,6 +44,7 @@
 "mysentinel\rc.o"
 "mysentinel\tripod.o"
 "mysentinel\underpan.o"
+"mysentinel\imu.o"
 "mysentinel\bsp_imu.o"
 "mysentinel\myiic.o"
 --strict --scatter "MYSENTINEL\MYSENTINEL.sct"

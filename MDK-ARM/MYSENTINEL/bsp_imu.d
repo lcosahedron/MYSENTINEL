@@ -1,6 +1,6 @@
 mysentinel\bsp_imu.o: ..\bsp\bsp_imu.c
 mysentinel\bsp_imu.o: ..\bsp\bsp_imu.h
-mysentinel\bsp_imu.o: ..\MDK-ARM\mytype.h
+mysentinel\bsp_imu.o: ../MDK-ARM/mytype.h
 mysentinel\bsp_imu.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
 mysentinel\bsp_imu.o: ../Core/Inc/stm32f4xx_hal_conf.h
 mysentinel\bsp_imu.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h

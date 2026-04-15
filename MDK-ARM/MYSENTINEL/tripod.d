@@ -38,4 +38,22 @@ mysentinel\tripod.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 mysentinel\tripod.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 mysentinel\tripod.o: ..\user\application\rc.h
 mysentinel\tripod.o: ../Core/Inc/usart.h
+mysentinel\tripod.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os.h
+mysentinel\tripod.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
+mysentinel\tripod.o: ../Core/Inc/FreeRTOSConfig.h
+mysentinel\tripod.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
+mysentinel\tripod.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
+mysentinel\tripod.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h
+mysentinel\tripod.o: ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/portmacro.h
+mysentinel\tripod.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h
+mysentinel\tripod.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h
+mysentinel\tripod.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h
+mysentinel\tripod.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h
+mysentinel\tripod.o: ../bsp/bsp_imu.h
+mysentinel\tripod.o: ../MDK-ARM/mytype.h
+mysentinel\tripod.o: C:\Keil_v5\ARM\arm complter5.06\Bin\..\include\stdarg.h
+mysentinel\tripod.o: C:\Keil_v5\ARM\arm complter5.06\Bin\..\include\stdbool.h
+mysentinel\tripod.o: C:\Keil_v5\ARM\arm complter5.06\Bin\..\include\stdlib.h
+mysentinel\tripod.o: C:\Keil_v5\ARM\arm complter5.06\Bin\..\include\string.h
+mysentinel\tripod.o: ..\user\application\underpan.h
 mysentinel\tripod.o: C:\Keil_v5\ARM\arm complter5.06\Bin\..\include\math.h

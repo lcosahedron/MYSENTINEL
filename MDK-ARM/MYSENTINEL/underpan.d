@@ -38,7 +38,6 @@ mysentinel\underpan.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.
 mysentinel\underpan.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 mysentinel\underpan.o: ..\user\application\rc.h
 mysentinel\underpan.o: ../Core/Inc/usart.h
-mysentinel\underpan.o: C:\Keil_v5\ARM\arm complter5.06\Bin\..\include\math.h
 mysentinel\underpan.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os.h
 mysentinel\underpan.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
 mysentinel\underpan.o: ../Core/Inc/FreeRTOSConfig.h
@@ -50,3 +49,5 @@ mysentinel\underpan.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wr
 mysentinel\underpan.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h
 mysentinel\underpan.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h
 mysentinel\underpan.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h
+mysentinel\underpan.o: ..\user\application\underpan.h
+mysentinel\underpan.o: C:\Keil_v5\ARM\arm complter5.06\Bin\..\include\math.h

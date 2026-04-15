@@ -1,6 +1,6 @@
 mysentinel\myiic.o: ..\bsp\myiic.c
 mysentinel\myiic.o: ..\bsp\myiic.h
-mysentinel\myiic.o: ..\MDK-ARM\mytype.h
+mysentinel\myiic.o: ../MDK-ARM/mytype.h
 mysentinel\myiic.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
 mysentinel\myiic.o: ../Core/Inc/stm32f4xx_hal_conf.h
 mysentinel\myiic.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h

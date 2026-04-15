@@ -7,6 +7,9 @@
  * 调用mpu_offset_call()函数进行陀螺 仪零偏校准，调用mpu_get_data()函数获取最新的传感器数据并进行姿态解算，
  * 获取的数据保存在imu_t类型的imu变量中，包含了加速度、陀螺仪、磁力计数据以及姿态数据，具体数据结构详见bsp_imu.h
  ******************************************************************************/ 
+#include "bsp_imu.h"
+#include "cmsis_os.h"
+
 void StartGetIMUData(void *argument)
 {
   /* USER CODE BEGIN StartGetIMUData */
