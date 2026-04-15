@@ -41,62 +41,38 @@ typedef struct
 } mpu_data_t;
 
 typedef struct
-{
-	int16_t ax;
-	int16_t ay;
-	int16_t az;
-
+{              	////线性加速度单位为mg，范围-32768~32767，对应-16g~+16g
+	int16_t ax;	//垂直于长边，以标志摆正观察，左负右正
+	int16_t ay;	//垂直于短边，加速度向前为正
+	int16_t az;	//加速度向下为正
+				//磁场强度单位为mGauss，范围-32768~32767，对应-4912mGauss~+4912mGauss
 	int16_t mx;
 	int16_t my;
 	int16_t mz;
 
-	float temp;
-
-	float wx; /*!< omiga, +- 2000dps => +-32768  so gx/16.384/57.3 =	rad/s */
-	float wy;
-	float wz;
-
+	float temp;	//温度，单位为摄氏度
+			   	////陀螺仪角速度单位为°/s，范围-32768~32767，对应-2000°/s~+2000°/s
+	float wx;  	//沿短轴旋转，从标志方向右视顺时针为正，单位为°/s
+	float wy;  	//沿长轴旋转，从标志方向正视逆时针为正，单位为°/s
+	float wz;  	//水平旋转，顺时针为正，单位为°/s
+			  	
 	float vx;
 	float vy;
 	float vz;
-
-	float rol;
-	float pit;
-	float yaw;
-} imu_t;
+				////姿态角单位为°，范围-180~+180
+	float rol;  //沿短轴旋转，从标志方向右视顺时针（低头）为正，单位为°
+	float pit;  //沿长轴旋转，从标志方向正视顺时针为正，单位为°
+	float yaw;  //水平旋转，顺时针为正，单位为°
+} imu_t;		//直接调这个结构体就行，里面包含了mpu数据和姿态数据
 
 extern mpu_data_t mpu_data;
 extern imu_t      imu;
 
-/**
- * @brief Initialize MPU6500 and IST8310 devices and run offset calibration.
- * @return 0 when initialization is successful, non-zero on failure.
- */
 uint8_t   mpu_device_init(void);
-
-/**
- * @brief Initialize AHRS quaternion using current magnetic field direction.
- */
 void init_quaternion(void);
-
-/**
- * @brief Read one frame of raw IMU data and update scaled gyro values.
- */
 void mpu_get_data(void);
-
-/**
- * @brief Run one AHRS update step based on current accelerometer/gyro/magnetometer data.
- */
 void imu_ahrs_update(void);
-
-/**
- * @brief Convert quaternion to Euler angles (yaw, pitch, roll) in degrees.
- */
 void imu_attitude_update(void);
-
-/**
- * @brief Calculate gyroscope and accelerometer zero offsets.
- */
 void mpu_offset_call(void);
 
 #endif
