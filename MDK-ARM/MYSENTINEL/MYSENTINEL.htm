@@ -3,7 +3,7 @@
 <title>Static Call Graph - [MYSENTINEL\MYSENTINEL.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image MYSENTINEL\MYSENTINEL.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Thu Apr 16 00:09:41 2026
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Thu Apr 16 00:45:02 2026
 <BR><P>
 <H3>Maximum Stack Usage =        288 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1430,7 +1430,8 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[a0]"></a>RC_GetData</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, rc.o(i.RC_GetData))
-<BR><BR>[Called By]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetUnderpanWheelSpeed
+<BR><BR>[Called By]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartUnderpan
+<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetUnderpanWheelSpeed
 <LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetTripodData
 </UL>
 
@@ -1472,7 +1473,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> freertos.o(i.MX_FREERTOS_Init)
 </UL>
-<P><STRONG><a name="[6a]"></a>StartTripod</STRONG> (Thumb, 230 bytes, Stack size 16 bytes, tripod.o(i.StartTripod))
+<P><STRONG><a name="[6a]"></a>StartTripod</STRONG> (Thumb, 144 bytes, Stack size 16 bytes, tripod.o(i.StartTripod))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = StartTripod &rArr; osDelay &rArr; vTaskDelay &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
 <BR>[Calls]<UL><LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osDelay
@@ -1482,13 +1483,14 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> freertos.o(i.MX_FREERTOS_Init)
 </UL>
-<P><STRONG><a name="[69]"></a>StartUnderpan</STRONG> (Thumb, 160 bytes, Stack size 40 bytes, underpan.o(i.StartUnderpan))
+<P><STRONG><a name="[69]"></a>StartUnderpan</STRONG> (Thumb, 176 bytes, Stack size 40 bytes, underpan.o(i.StartUnderpan))
 <BR><BR>[Stack]<UL><LI>Max Depth = 288<LI>Call Chain = StartUnderpan &rArr; GetUnderpanWheelSpeed &rArr; __hardfp_sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osDelay
 <LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 <LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
 <LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetUnderpanWheelSpeed
+<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RC_GetData
 <LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN2_FindLatestById
 <LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN1_Send
 </UL>

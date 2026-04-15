@@ -35,11 +35,11 @@ uint16_t pitch_data = 0;
 
 void GetTripodData(void)
 {
-    CAN2_FindLatestById(0x201, &Upyaw_motor_msg); //接收6020电机的角度信息
-    upyaw_angle = (Upyaw_motor_msg.data[1] << 8) | Upyaw_motor_msg.data[0]; //角度值，范围0-8191
-    CAN2_FindLatestById(0x202, &pitch_motor_msg); 
+    CAN2_FindLatestById(0x204, &pitch_motor_msg); 
     pitch_angle = (pitch_motor_msg.data[1] << 8) | pitch_motor_msg.data[0];
-    CAN2_FindLatestById(0x203, &Downyaw_motor_msg);
+    CAN2_FindLatestById(0x205, &Upyaw_motor_msg); //接收6020电机的角度信息
+    upyaw_angle = (Upyaw_motor_msg.data[1] << 8) | Upyaw_motor_msg.data[0]; //角度值，范围0-8191
+    CAN2_FindLatestById(0x206, &Downyaw_motor_msg);
     downyaw_angle = (Downyaw_motor_msg.data[1] << 8) | Downyaw_motor_msg.data[0];
 
     RC_CtrlData = *RC_GetData();
@@ -64,14 +64,14 @@ void StartTripod(void *argument)
     
     // if(RC_CtrlData.rc.s2 != RC_SW_MID) //安全模式，遥控器s2开关不在中间时才会发送云台控制指令，否则发送0
     // {
-    //     send_data[0] = (uint8_t)(upyaw_data & 0xFF);
-    //     send_data[1] = (uint8_t)((upyaw_data >> 8) & 0xFF);
-    //     send_data[2] = (uint8_t)(pitch_data & 0xFF);
-    //     send_data[3] = (uint8_t)((pitch_data >> 8) & 0xFF);
+    //     send_data[0] = (uint8_t)(pitch_data & 0xFF);
+    //     send_data[1] = (uint8_t)((pitch_data >> 8) & 0xFF);
+    //     send_data[2] = (uint8_t)(upyaw_data & 0xFF);
+    //     send_data[3] = (uint8_t)((upyaw_data >> 8) & 0xFF);
     //     send_data[4] = (uint8_t)(downyaw_data & 0xFF);
     //     send_data[5] = (uint8_t)((downyaw_data >> 8) & 0xFF);
     // }
-    CAN2_Send(0x200, send_data); //发送给电机控制器
+    CAN2_Send(0x1ff, send_data); //发送给电机控制器
     osDelay(10);
   }
   /* USER CODE END StartTripod */

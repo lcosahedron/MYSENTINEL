@@ -52,6 +52,7 @@ void MX_CAN1_Init(void)
   hcan1.Init.TransmitFifoPriority = DISABLE;
   if (HAL_CAN_Init(&hcan1) != HAL_OK)
   {
+    error_code = 7;
     Error_Handler();
   }
   /* USER CODE BEGIN CAN1_Init 2 */
@@ -84,6 +85,7 @@ void MX_CAN2_Init(void)
   hcan2.Init.TransmitFifoPriority = DISABLE;
   if (HAL_CAN_Init(&hcan2) != HAL_OK)
   {
+    error_code = 8;
     Error_Handler();
   }
   /* USER CODE BEGIN CAN2_Init 2 */

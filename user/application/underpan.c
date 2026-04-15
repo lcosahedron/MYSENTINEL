@@ -57,22 +57,36 @@ void StartUnderpan(void *argument)
   for(;;)
   {
     //TODO:安装时配置6020电机编码，修改can2_6020_msg的ID为对应的ID
-    CAN2_FindLatestById(0x201, &can2_6020_msg); //接收6020电机的角度信息
+    CAN2_FindLatestById(0x206, &can2_6020_msg); //接收6020电机的角度信息
     uint16_t anglereceive = (can2_6020_msg.data[1] << 8) | can2_6020_msg.data[0]; //角度值，范围0-8191
     deviation_angle = (double)(anglereceive - ZeroAnglePoint) * 2.0 * M_PI / 8192.0; //计算偏差角，单位为弧度
     wheel_speed_t wheel_speed = GetUnderpanWheelSpeed();
     uint8_t data[8] = {0};
-    data[0] = (uint8_t)(wheel_speed.fl & 0xFF);
-    data[1] = (uint8_t)((wheel_speed.fl >> 8) & 0xFF);
-    data[2] = (uint8_t)(wheel_speed.fr & 0xFF);
-    data[3] = (uint8_t)((wheel_speed.fr >> 8) & 0xFF);
-    data[4] = (uint8_t)(wheel_speed.bl & 0xFF);
-    data[5] = (uint8_t)((wheel_speed.bl >> 8) & 0xFF);
-    data[6] = (uint8_t)(wheel_speed.br & 0xFF);
-    data[7] = (uint8_t)((wheel_speed.br >> 8) & 0xFF);
+    if(RC_GetData()->rc.s2 != RC_SW_MID) //安全模式，遥控器s2开关不在中间时才会发送底盘控制指令，否则发送0
+    {
+        data[0] = (uint8_t)(wheel_speed.fr & 0xFF);
+        data[1] = (uint8_t)((wheel_speed.fr >> 8) & 0xFF);
+        data[2] = (uint8_t)(wheel_speed.fl & 0xFF);
+        data[3] = (uint8_t)((wheel_speed.fl >> 8) & 0xFF);
+        data[4] = (uint8_t)(wheel_speed.bl & 0xFF);
+        data[5] = (uint8_t)((wheel_speed.bl >> 8) & 0xFF);
+        data[6] = (uint8_t)(wheel_speed.br & 0xFF);
+        data[7] = (uint8_t)((wheel_speed.br >> 8) & 0xFF);
+    }
+    else //安全模式，遥控器s2开关在中间时发送0，停止底盘
+    {
+        data[0] = 0;
+        data[1] = 0;
+        data[2] = 0;
+        data[3] = 0;
+        data[4] = 0;
+        data[5] = 0;
+        data[6] = 0;
+        data[7] = 0;
+    }
     CAN1_Send(0x200, data);
 
-    osDelay(1);
+    osDelay(10);
   }
   /* USER CODE END StartUnderpan */
 }
