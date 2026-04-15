@@ -61,6 +61,20 @@ const osThreadAttr_t Underpan_attributes = {
   .stack_size = 128 * 4,
   .priority = (osPriority_t) osPriorityNormal,
 };
+/* Definitions for tripod */
+osThreadId_t tripodHandle;
+const osThreadAttr_t tripod_attributes = {
+  .name = "tripod",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityNormal,
+};
+/* Definitions for GetIMUData */
+osThreadId_t GetIMUDataHandle;
+const osThreadAttr_t GetIMUData_attributes = {
+  .name = "GetIMUData",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityNormal,
+};
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
@@ -69,6 +83,8 @@ const osThreadAttr_t Underpan_attributes = {
 
 void StartDefaultTask(void *argument);
 void StartUnderpan(void *argument);
+void StartTripod(void *argument);
+void StartGetIMUData(void *argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -104,6 +120,12 @@ void MX_FREERTOS_Init(void) {
 
   /* creation of Underpan */
   UnderpanHandle = osThreadNew(StartUnderpan, NULL, &Underpan_attributes);
+
+  /* creation of tripod */
+  tripodHandle = osThreadNew(StartTripod, NULL, &tripod_attributes);
+
+  /* creation of GetIMUData */
+  GetIMUDataHandle = osThreadNew(StartGetIMUData, NULL, &GetIMUData_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -149,6 +171,42 @@ __weak void StartUnderpan(void *argument)
     osDelay(1);
   }
   /* USER CODE END StartUnderpan */
+}
+
+/* USER CODE BEGIN Header_StartTripod */
+/**
+* @brief Function implementing the tripod thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_StartTripod */
+__weak void StartTripod(void *argument)
+{
+  /* USER CODE BEGIN StartTripod */
+  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(1);
+  }
+  /* USER CODE END StartTripod */
+}
+
+/* USER CODE BEGIN Header_StartGetIMUData */
+/**
+* @brief Function implementing the GetIMUData thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_StartGetIMUData */
+__weak void StartGetIMUData(void *argument)
+{
+  /* USER CODE BEGIN StartGetIMUData */
+  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(1);
+  }
+  /* USER CODE END StartGetIMUData */
 }
 
 /* Private application code --------------------------------------------------*/
