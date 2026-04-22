@@ -49,8 +49,7 @@ mysentinel\main.o: ../Core/Inc/dma.h
 mysentinel\main.o: ../Core/Inc/spi.h
 mysentinel\main.o: ../Core/Inc/usart.h
 mysentinel\main.o: ../Core/Inc/gpio.h
-mysentinel\main.o: ..\user\application\rc.h
-mysentinel\main.o: ..\user\application\canbus.h
+mysentinel\main.o: ../user/application/canbus.h
 mysentinel\main.o: ../bsp/bsp_imu.h
 mysentinel\main.o: ../MDK-ARM/mytype.h
 mysentinel\main.o: C:\Keil_v5\ARM\arm complter5.06\Bin\..\include\stdarg.h

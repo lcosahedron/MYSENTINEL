@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F427xx</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Middlewares/Third_Party/FreeRTOS/Source/include;../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Drivers/CMSIS/Include;../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2;../MDK-ARM;../bsp;..\user\application</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Middlewares/Third_Party/FreeRTOS/Source/include;../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Drivers/CMSIS/Include;../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2;../MDK-ARM;../bsp;../user/application;../user</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -773,11 +773,6 @@
               <FilePath>..\user\application\pid.c</FilePath>
             </File>
             <File>
-              <FileName>rc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user\application\rc.c</FilePath>
-            </File>
-            <File>
               <FileName>tripod.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user\application\tripod.c</FilePath>
@@ -791,6 +786,11 @@
               <FileName>imu.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user\application\imu.c</FilePath>
+            </File>
+            <File>
+              <FileName>remote_control.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user\application\remote_control.c</FilePath>
             </File>
           </Files>
         </Group>

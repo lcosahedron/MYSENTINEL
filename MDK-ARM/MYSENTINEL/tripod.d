@@ -36,7 +36,7 @@ mysentinel\tripod.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h
 mysentinel\tripod.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 mysentinel\tripod.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 mysentinel\tripod.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
-mysentinel\tripod.o: ..\user\application\rc.h
+mysentinel\tripod.o: ..\user\application\remote_control.h
 mysentinel\tripod.o: ../Core/Inc/usart.h
 mysentinel\tripod.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os.h
 mysentinel\tripod.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h

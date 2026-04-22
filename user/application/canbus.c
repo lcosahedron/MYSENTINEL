@@ -131,22 +131,50 @@ HAL_StatusTypeDef CAN1_BusStart(void)
 	filter.FilterActivation = ENABLE;
 	filter.SlaveStartFilterBank = 14;
 
+	extern volatile uint8_t error_code;
 	CAN1_RxLatestClear();
 
 	if (HAL_CAN_ConfigFilter(&hcan1, &filter) != HAL_OK)
 	{
+		error_code = 11;
+		HAL_GPIO_WritePin(GPIOE, GPIO_PIN_11, GPIO_PIN_SET); // Green LED on
+		HAL_Delay(1000);
+		HAL_GPIO_WritePin(GPIOE, GPIO_PIN_11, GPIO_PIN_RESET); // Green LED off
 		return HAL_ERROR;
 	}
 
 	if (HAL_CAN_Start(&hcan1) != HAL_OK)
 	{
+		error_code = 12;
+		HAL_GPIO_WritePin(GPIOE, GPIO_PIN_11, GPIO_PIN_SET);
+		HAL_Delay(1000);
+		HAL_GPIO_WritePin(GPIOE, GPIO_PIN_11, GPIO_PIN_RESET);
 		return HAL_ERROR;
 	}
 
 	if (HAL_CAN_ActivateNotification(&hcan1, CAN_IT_RX_FIFO0_MSG_PENDING) != HAL_OK)
 	{
+		error_code = 13;
+		HAL_GPIO_WritePin(GPIOE, GPIO_PIN_11, GPIO_PIN_SET);
+		HAL_Delay(1000);
+		HAL_GPIO_WritePin(GPIOE, GPIO_PIN_11, GPIO_PIN_RESET);
 		return HAL_ERROR;
 	}
+
+	// if (HAL_CAN_ConfigFilter(&hcan1, &filter) != HAL_OK)
+	// {
+	// 	return HAL_ERROR;
+	// }
+
+	// if (HAL_CAN_Start(&hcan1) != HAL_OK)
+	// {
+	// 	return HAL_ERROR;
+	// }
+
+	// if (HAL_CAN_ActivateNotification(&hcan1, CAN_IT_RX_FIFO0_MSG_PENDING) != HAL_OK)
+	// {
+	// 	return HAL_ERROR;
+	// }
 
 	return HAL_OK;
 }
@@ -166,22 +194,50 @@ HAL_StatusTypeDef CAN2_BusStart(void)
 	filter.FilterActivation = ENABLE;
 	filter.SlaveStartFilterBank = 14;
 
+	extern volatile uint8_t error_code;
 	CAN2_RxLatestClear();
 
 	if (HAL_CAN_ConfigFilter(&hcan2, &filter) != HAL_OK)
 	{
+		error_code = 21;
+		HAL_GPIO_WritePin(GPIOE, GPIO_PIN_11, GPIO_PIN_SET);
+		HAL_Delay(1000);
+		HAL_GPIO_WritePin(GPIOE, GPIO_PIN_11, GPIO_PIN_RESET);
 		return HAL_ERROR;
 	}
 
 	if (HAL_CAN_Start(&hcan2) != HAL_OK)
 	{
+		error_code = 22;
+		HAL_GPIO_WritePin(GPIOE, GPIO_PIN_11, GPIO_PIN_SET);
+		HAL_Delay(1000);
+		HAL_GPIO_WritePin(GPIOE, GPIO_PIN_11, GPIO_PIN_RESET);
 		return HAL_ERROR;
 	}
 
 	if (HAL_CAN_ActivateNotification(&hcan2, CAN_IT_RX_FIFO0_MSG_PENDING) != HAL_OK)
 	{
+		error_code = 23;
+		HAL_GPIO_WritePin(GPIOE, GPIO_PIN_11, GPIO_PIN_SET);
+		HAL_Delay(1000);
+		HAL_GPIO_WritePin(GPIOE, GPIO_PIN_11, GPIO_PIN_RESET);
 		return HAL_ERROR;
 	}
+
+	// if (HAL_CAN_ConfigFilter(&hcan2, &filter) != HAL_OK)
+	// {
+	// 	return HAL_ERROR;
+	// }
+
+	// if (HAL_CAN_Start(&hcan2) != HAL_OK)
+	// {
+	// 	return HAL_ERROR;
+	// }
+
+	// if (HAL_CAN_ActivateNotification(&hcan2, CAN_IT_RX_FIFO0_MSG_PENDING) != HAL_OK)
+	// {
+	// 	return HAL_ERROR;
+	// }
 
 	return HAL_OK;
 }

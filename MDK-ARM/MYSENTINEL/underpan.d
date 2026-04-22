@@ -36,7 +36,7 @@ mysentinel\underpan.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h
 mysentinel\underpan.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 mysentinel\underpan.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 mysentinel\underpan.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
-mysentinel\underpan.o: ..\user\application\rc.h
+mysentinel\underpan.o: ..\user\application\remote_control.h
 mysentinel\underpan.o: ../Core/Inc/usart.h
 mysentinel\underpan.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os.h
 mysentinel\underpan.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h

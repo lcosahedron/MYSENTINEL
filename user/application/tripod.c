@@ -1,6 +1,6 @@
 #include "pid.h"
 #include "canbus.h"
-#include "rc.h"
+#include "remote_control.h"
 #include "cmsis_os.h"
 #include "bsp_imu.h"
 #include "underpan.h"
@@ -13,7 +13,7 @@
 PID_Controller downyaw_pid = {1000.0f, 0.0f, 0.0f}; //大yaw的pid，比例系数先初始化为1000，之后调试时再修改
 PID_Controller upyaw_pid = {1000.0f, 0.0f, 0.0f}; //小yaw的pid，比例系数先初始化为1000，之后调试时再修改
 PID_Controller pitch_pid = {1000.0f, 0.0f, 0.0f}; //pitch的pid，比例系数先初始化为1000，之后调试时再修改
-RC_Ctl_t RC_CtrlData;
+// 使用 remote_control.h 的全局 rc_data
 CAN_RxFrame_t Upyaw_motor_msg;
 CAN_RxFrame_t Downyaw_motor_msg;
 CAN_RxFrame_t pitch_motor_msg;
@@ -42,9 +42,8 @@ void GetTripodData(void)
     CAN2_FindLatestById(0x206, &Downyaw_motor_msg);
     downyaw_angle = (Downyaw_motor_msg.data[1] << 8) | Downyaw_motor_msg.data[0];
 
-    RC_CtrlData = *RC_GetData();
-    upyaw_pid.setpoint += (RC_CtrlData.rc.ch0 - RC_CH_VALUE_OFFSET + RC_CtrlData.mouse.x) * upyaw_speed;
-    pitch_pid.setpoint += (RC_CtrlData.rc.ch1 - RC_CH_VALUE_OFFSET + RC_CtrlData.mouse.z) * pitch_speed;
+    upyaw_pid.setpoint += (rc_data.Channels.ch0 - RC_CH_VALUE_OFFSET + rc_data.Mouse.mouse_x) * upyaw_speed;
+    pitch_pid.setpoint += (rc_data.Channels.ch1 - RC_CH_VALUE_OFFSET + rc_data.Mouse.mouse_z) * pitch_speed;
 }
 
 void StartTripod(void *argument)
@@ -62,7 +61,7 @@ void StartTripod(void *argument)
     pitch_data = (uint16_t)PID_Compute(&pitch_pid, pitch_angle);//这里之后应该再写个重力补偿
     uint8_t send_data[8] = {0};
     
-    // if(RC_CtrlData.rc.s2 != RC_SW_MID) //安全模式，遥控器s2开关不在中间时才会发送云台控制指令，否则发送0
+    // if(rc_data.Switch.switch2 != RC_SW_MID) //安全模式，遥控器s2开关不在中间时才会发送云台控制指令，否则发送0
     // {
     //     send_data[0] = (uint8_t)(pitch_data & 0xFF);
     //     send_data[1] = (uint8_t)((pitch_data >> 8) & 0xFF);
